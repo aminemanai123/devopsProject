@@ -1,10 +1,12 @@
 version: '3.8'
+
 services:
   mysql:
     image: mysql:8.0
+    container_name: mysql-events
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: eventdb
+      MYSQL_DATABASE: eventsdb
     ports:
       - "3306:3306"
     volumes:
@@ -13,13 +15,14 @@ services:
       - app-network
 
   spring-app:
-    image: docker push aminemanai333/projetdevops:latest
+    image: aminemanai333/projetdevops:latest  # juste le nom de l'image
+    container_name: events-app
     ports:
       - "8080:8080"
     depends_on:
       - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eventdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eventsdb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     networks:
@@ -30,3 +33,4 @@ volumes:
 
 networks:
   app-network:
+
