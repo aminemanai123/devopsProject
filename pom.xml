@@ -82,7 +82,7 @@
  <distributionManagement>
  <repository>
  <id>nexus-release</id>
- <url>http://localhost:8081/repository/eventsproject-snapshots/</url>
+ <url>http://localhost:8081/repository/projetdevops/</url>
  </repository>
  </distributionManagement>
  
