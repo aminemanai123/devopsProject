@@ -13,7 +13,7 @@ services:
       - app-network
 
   spring-app:
-    image: votre-dockerhub-username/event-management:latest
+    image: docker push aminemanai333/projetdevops:latest
     ports:
       - "8080:8080"
     depends_on:
