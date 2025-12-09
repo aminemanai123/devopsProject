@@ -15,7 +15,7 @@ services:
       - app-network
 
   spring-app:
-    image: aminemanai333/projetdevops:latest  # juste le nom de l'image
+    image: aminemanai333/projetdevops:latest
     container_name: events-app
     ports:
       - "8090:8080"
@@ -25,6 +25,28 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/eventsdb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+    networks:
+      - app-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - spring-app
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
     networks:
       - app-network
 
