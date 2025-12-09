@@ -18,7 +18,7 @@ services:
     image: aminemanai333/projetdevops:latest  # juste le nom de l'image
     container_name: events-app
     ports:
-      - "8080:8080"
+      - "8090:8080"
     depends_on:
       - mysql
     environment:
