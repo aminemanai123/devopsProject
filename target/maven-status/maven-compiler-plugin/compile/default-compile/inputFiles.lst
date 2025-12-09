@@ -1,0 +1,12 @@
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/EventsProjectApplication.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/config/PerformanceAspect.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/controllers/EventRestController.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/entities/Event.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/entities/Logistics.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/entities/Participant.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/entities/Tache.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/repositories/EventRepository.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/repositories/LogisticsRepository.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/repositories/ParticipantRepository.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/services/EventServicesImpl.java
+/home/user/devops-projet/eventsProject/src/main/java/tn/fst/eventsproject/services/IEventServices.java
