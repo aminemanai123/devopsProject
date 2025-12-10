@@ -13,6 +13,11 @@ services:
       - mysql-data:/var/lib/mysql
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping","-h","localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   spring-app:
     image: aminemanai333/projetdevops:latest
@@ -27,6 +32,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: root
     networks:
       - app-network
+    restart: always
 
   prometheus:
     image: prom/prometheus:latest
