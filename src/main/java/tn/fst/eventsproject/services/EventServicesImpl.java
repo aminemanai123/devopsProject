@@ -31,18 +31,6 @@ public class EventServicesImpl implements IEventServices{
         return participantRepository.save(participant);
     }
 
-    @Override
-    public Event addAffectEvenParticipant(Event event, int idParticipant) {
-        Participant participant = participantRepository.findById(idParticipant).orElse(null);
-        if(participant.getEvents() == null){
-            Set<Event> events = new HashSet<>();
-            events.add(event);
-            participant.setEvents(events);
-        }else {
-            participant.getEvents().add(event);
-        }
-        return eventRepository.save(event);
-    }
 
     @Override
     public Event addAffectEvenParticipant(Event event) {
@@ -117,4 +105,5 @@ public class EventServicesImpl implements IEventServices{
     }
 
 }
+
 
