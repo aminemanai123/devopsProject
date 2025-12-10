@@ -32,29 +32,17 @@ public class EventServicesImpl implements IEventServices{
     }
 
     @Override
-public Event addAffectEvenParticipant(Event event, int idParticipant) {
-
-    Participant participant = participantRepository.findById(idParticipant)
-            .orElseThrow(() -> new RuntimeException("Participant not found with id: " + idParticipant));
-
-    // Initialiser la collection d'événements si elle est nulle
-    if (participant.getEvents() == null) {
-        participant.setEvents(new HashSet<>());
+    public Event addAffectEvenParticipant(Event event, int idParticipant) {
+        Participant participant = participantRepository.findById(idParticipant).orElse(null);
+        if(participant.getEvents() == null){
+            Set<Event> events = new HashSet<>();
+            events.add(event);
+            participant.setEvents(events);
+        }else {
+            participant.getEvents().add(event);
+        }
+        return eventRepository.save(event);
     }
-
-    // Ajouter l'événement au participant
-    participant.getEvents().add(event);
-
-    // Ajouter le participant à l'événement (si relation bidirectionnelle)
-    if (event.getParticipants() == null) {
-        event.setParticipants(new HashSet<>());
-    }
-    event.getParticipants().add(participant);
-
-    // Sauvegarder l'événement
-    return eventRepository.save(event);
-}
-
 
     @Override
     public Event addAffectEvenParticipant(Event event) {
