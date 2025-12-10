@@ -61,18 +61,17 @@ public class EventServicesImpl implements IEventServices{
     }
 
     @Override
-    public Logistics addAffectLog(Logistics logistics, String descriptionEvent) {
-      Event event = eventRepository.findByDescription(descriptionEvent);
-      if(event.getLogistics() == null){
-          Set<Logistics> logisticsSet = new HashSet<>();
-          logisticsSet.add(logistics);
-          event.setLogistics(logisticsSet);
-          eventRepository.save(event);
-      }
-      else{
-          event.getLogistics().add(logistics);
-      }
-        return logisticsRepository.save(logistics);
+    public Event addAffectEvenParticipant(Event event, int idParticipant) {
+        Participant participant = participantRepository.findById(idParticipant).orElseThrow(() -> new RuntimeException("Participant not found with id: " + idParticipant));
+        if (participant.getEvents() == null) {
+            participant.setEvents(new HashSet<>());
+        }
+        participant.getEvents().add(event);
+        if (event.getParticipants() == null) {
+            event.setParticipants(new HashSet<>());
+        }
+        event.getParticipants().add(participant);
+        return eventRepository.save(event);
     }
 
     @Override
@@ -118,3 +117,4 @@ public class EventServicesImpl implements IEventServices{
     }
 
 }
+
